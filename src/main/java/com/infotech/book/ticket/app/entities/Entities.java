@@ -12,16 +12,16 @@ public class Entities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int Id;
+    private Integer Id;
     private String username;
     private String password;
     private String role;
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         Id = id;
     }
 
@@ -52,7 +52,7 @@ public class Entities {
     public Entities() {
     }
 
-    public Entities(int id, String username, String password, String role) {
+    public Entities(Integer id, String username, String password, String role) {
         Id = id;
         this.username = username;
         this.password = password;
