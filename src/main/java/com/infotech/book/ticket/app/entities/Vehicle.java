@@ -18,18 +18,14 @@ public class Vehicle {
 
 	private String Vehicle_Number_Plate;
 
-	private String Vehicle_Type;
+	private VehicleType  Vehicle_Type;
 	private Date Entry_Time;
 	private Date Exit_Time;
 
 	public Vehicle() {
 	}
 
-	public Vehicle(Integer vehicleId, String vehicle_Number_Plate, String vehicle_Type) {
-		this.vehicleId = vehicleId;
-		Vehicle_Number_Plate = vehicle_Number_Plate;
-		Vehicle_Type = vehicle_Type;
-	}
+	
 
 	public Integer getVehicleId() {
 		return vehicleId;
@@ -47,11 +43,11 @@ public class Vehicle {
 		Vehicle_Number_Plate = vehicle_Number_Plate;
 	}
 
-	public String getVehicle_Type() {
+	public VehicleType  getVehicle_Type() {
 		return Vehicle_Type;
 	}
 
-	public void setVehicle_Type(String vehicle_Type) {
+	public void setVehicle_Type(VehicleType  vehicle_Type) {
 		Vehicle_Type = vehicle_Type;
 	}
 
@@ -69,6 +65,12 @@ public class Vehicle {
 
 	public void setExit_Time(Date exit_Time) {
 		Exit_Time = exit_Time;
+	}
+
+	public Vehicle(Integer vehicleId, String vehicle_Number_Plate, VehicleType vehicle_Type) {
+		this.vehicleId = vehicleId;
+		Vehicle_Number_Plate = vehicle_Number_Plate;
+		this.setVehicle_Type(vehicle_Type);
 	}
 
 }

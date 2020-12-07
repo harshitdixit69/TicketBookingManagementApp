@@ -18,13 +18,17 @@
                     <th>id</th>
                     <th>vehicleNameplate</th>
                     <th>vehicleType</th>
+                    <th>Vehicle Entry Timing</th>
+                    <th>Vehicle Exit Timing</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="vehicle:${allVehicle}">
-                    <td th:text="${vehicle.id}">id</td>
-                    <td th:text="${vehicle.vehicleNameplate}">vehicleNameplate</td>
-                    <td th:text="${vehicle.vehicleType}">vehicleType</td>
+                    <td th:text="${vehicle.vehicleId}">id</td>
+                    <td th:text="${vehicle.Vehicle_Number_Plate}">vehicleNameplate</td>
+                    <td th:text="${vehicle.Vehicle_Type}">vehicleType</td>
+                    <td th:text="${vehicle.Entry_Time}">Vehicle Entry Timing</td>
+                    <td th:text="${vehicle.Exit_Time}">Vehicle Exit Timing</td>
                 </tr>
             </tbody>
         </table>

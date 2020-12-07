@@ -1,6 +1,8 @@
 package com.infotech.book.ticket.app.controller;
 
+import com.infotech.book.ticket.app.entities.Entities;
 import com.infotech.book.ticket.app.entities.Vehicle;
+import com.infotech.book.ticket.app.service.Userservice;
 import com.infotech.book.ticket.app.service.VehicleDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,73 +18,76 @@ public class VehicleDataController {
 
 	@Autowired
 	private VehicleDataService vehicleDataService;
-	public static final long SEC =10;
+
+	@Autowired
+	private Userservice userservice;
 
 	@GetMapping(value = "/set/createuser")
-    public ModelAndView createView() {
-        ModelAndView modelAndView = new ModelAndView("createparking");
-        modelAndView.addObject("Vehicle", new Vehicle());
-        return modelAndView;
-    }
+	public ModelAndView createView() {
+		ModelAndView modelAndView = new ModelAndView("createparking");
+		modelAndView.addObject("Vehicle", new Vehicle());
+		return modelAndView;
+	}
 
-    // @GetMapping(value = "/set/setUser")
-    // public ModelAndView createUser() {
-    //     ModelAndView modelAndView = new ModelAndView("Signup");
-    //     modelAndView.addObject("Entities", new Entities());
-    //     return modelAndView;
-    // }
+	@GetMapping(value = "/set/setUser")
+	public ModelAndView createUser() {
+		ModelAndView modelAndView = new ModelAndView("Signup");
+		modelAndView.addObject("Entities", new Entities());
+		return modelAndView;
+	}
 
-    // @PostMapping(value = "/set/adduser")
-    // public ModelAndView addUser(Entities entities) {
-    //     ModelAndView modelAndView = new ModelAndView();
-    //     userservice.create(entities);
-    //     modelAndView.setViewName("success");
-    //     return modelAndView;
-    // }
+	@PostMapping(value = "/set/adduser")
+	public ModelAndView addUser(Entities entities) {
+		ModelAndView modelAndView = new ModelAndView();
+		userservice.create(entities);
+		modelAndView.setViewName("success");
+		return modelAndView;
+	}
 
-    @PostMapping(value = "/set/createparking")
-    public ModelAndView create(Vehicle vehicle) {
-        ModelAndView modelAndView = new ModelAndView();
-        vehicleDataService.createTicket(vehicle);
-        modelAndView.setViewName("success");
-        return modelAndView;
-    }
+	@PostMapping(value = "/set/createparking")
+	public ModelAndView create(Vehicle vehicle) {
+		ModelAndView modelAndView = new ModelAndView();
+		vehicleDataService.createTicket(vehicle);
 
-    @GetMapping(value = "/get/createparking")
-    public ModelAndView showUser(Vehicle vehicle) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("allVehicle", vehicleDataService.getAllBookedTickets());
-        modelAndView.setViewName("userinfo");
-        return modelAndView;
-    }
+		modelAndView.setViewName("success");
+		return modelAndView;
+	}
 
-    // @GetMapping(value = "/get/{id}")
-    // public Vehicle getVehicleDetail(@PathVariable("id") String id) {
-    // return parkingservice.getDetail(id);
-    // }
+	@GetMapping(value = "/get/createparking")
+	public ModelAndView showUser(Vehicle vehicle) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("allVehicle", vehicleDataService.getAllBookedTickets());
+		modelAndView.setViewName("userinfo");
+		return modelAndView;
+	}
 
-    @GetMapping(value = "/get/getALl")
-    public Iterable<Vehicle> getMethodName() {
-        return vehicleDataService.getAllBookedTickets();
-    }
+	// @GetMapping(value = "/get/{id}")
+	// public Vehicle getVehicleDetail(@PathVariable("id") String id) {
+	// return parkingservice.getDetail(id);
+	// }
 
-    // @GetMapping(value = "/get/getType/{vehicleType}")
-    // public ModelAndView getListVehicleType(@PathVariable("vehicleType") VehicleType vehicleType) {
-    //     ModelAndView modelAndView = new ModelAndView();
-    //     modelAndView.addObject("allVehicle", parkingservice.gettypeAll(vehicleType));
-    //     modelAndView.setViewName("vehicletype");
-    //     return modelAndView;
-    // }
+	@GetMapping(value = "/get/getALl")
+	public Iterable<Vehicle> getMethodName() {
+		return vehicleDataService.getAllBookedTickets();
+	}
+
+	// @GetMapping(value = "/get/getType/{vehicleType}")
+	// public ModelAndView getListVehicleType(@PathVariable("vehicleType") VehicleType vehicleType) {
+	// 	ModelAndView modelAndView = new ModelAndView();
+	// 	modelAndView.addObject("allVehicle", vehicleDataService.gettypeAll(vehicleType));
+	// 	modelAndView.setViewName("vehicletype");
+	// 	return modelAndView;
+	// }
 
 	// @RequestMapping(value = "/ticket/create", method = RequestMethod.POST)
 	// public Vehicle createTicket(@RequestBody Vehicle ticket) {
-	// 	ticket.setEntry_Time(new Date());
-	// 	ticket.setExit_Time(new Date(System.currentTimeMillis()+1000*60*60*10));
-	// 	return vehicleDataService.createTicket(ticket);
+	// ticket.setEntry_Time(new Date());
+	// ticket.setExit_Time(new Date(System.currentTimeMillis()+1000*60*60*10));
+	// return vehicleDataService.createTicket(ticket);
 	// }
 
 	// @GetMapping(value = "/ticket/alltickets")
 	// public Iterable<Vehicle> getAllBookedTickets() {
-	// 	return vehicleDataService.getAllBookedTickets();
+	// return vehicleDataService.getAllBookedTickets();
 	// }
 }
