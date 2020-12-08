@@ -7,6 +7,7 @@ import com.infotech.book.ticket.app.service.VehicleDataService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,33 +62,16 @@ public class VehicleDataController {
 		return modelAndView;
 	}
 
-	// @GetMapping(value = "/get/{id}")
-	// public Vehicle getVehicleDetail(@PathVariable("id") String id) {
-	// return parkingservice.getDetail(id);
-	// }
-
 	@GetMapping(value = "/get/getALl")
 	public Iterable<Vehicle> getMethodName() {
 		return vehicleDataService.getAllBookedTickets();
 	}
 
-	// @GetMapping(value = "/get/getType/{vehicleType}")
-	// public ModelAndView getListVehicleType(@PathVariable("vehicleType") VehicleType vehicleType) {
-	// 	ModelAndView modelAndView = new ModelAndView();
-	// 	modelAndView.addObject("allVehicle", vehicleDataService.gettypeAll(vehicleType));
-	// 	modelAndView.setViewName("vehicletype");
-	// 	return modelAndView;
-	// }
-
-	// @RequestMapping(value = "/ticket/create", method = RequestMethod.POST)
-	// public Vehicle createTicket(@RequestBody Vehicle ticket) {
-	// ticket.setEntry_Time(new Date());
-	// ticket.setExit_Time(new Date(System.currentTimeMillis()+1000*60*60*10));
-	// return vehicleDataService.createTicket(ticket);
-	// }
-
-	// @GetMapping(value = "/ticket/alltickets")
-	// public Iterable<Vehicle> getAllBookedTickets() {
-	// return vehicleDataService.getAllBookedTickets();
-	// }
+	@GetMapping(value = "/get/deleteData/{vehicleId}")
+	public ModelAndView deleteTicket(@PathVariable Integer vehicleId) {
+		ModelAndView modelAndView = new ModelAndView();
+		vehicleDataService.deleteData(vehicleId);
+		modelAndView.setViewName("success");
+		return modelAndView;
+	}
 }

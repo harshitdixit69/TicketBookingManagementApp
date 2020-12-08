@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyuserDetail implements UserDetails {
-    private static final long serialVersionUID = 8641876840758867521L;
     private String username;
     private String password;
     private List<GrantedAuthority> authority;
@@ -56,4 +55,5 @@ public class MyuserDetail implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
