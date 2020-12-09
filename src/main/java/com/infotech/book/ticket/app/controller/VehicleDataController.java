@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping(value = "/api/tickets")
+@RequestMapping(value = "/")
 public class VehicleDataController {
 
 	@Autowired
@@ -30,7 +30,7 @@ public class VehicleDataController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/set/setUser")
+	@GetMapping(value = "/")
 	public ModelAndView createUser() {
 		ModelAndView modelAndView = new ModelAndView("Signup");
 		modelAndView.addObject("Entities", new Entities());
