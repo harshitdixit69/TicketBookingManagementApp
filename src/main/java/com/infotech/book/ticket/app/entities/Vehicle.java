@@ -3,8 +3,6 @@ package com.infotech.book.ticket.app.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,19 +11,25 @@ import javax.persistence.Table;
 public class Vehicle {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	// @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer vehicleId;
 
 	private String Vehicle_Number_Plate;
 
-	private VehicleType  Vehicle_Type;
+	private VehicleType vehicleType;
 	private Date Entry_Time;
 	private Date Exit_Time;
 
 	public Vehicle() {
 	}
 
-	
+	public VehicleType getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(VehicleType vehicleType) {
+		this.vehicleType = vehicleType;
+	}
 
 	public Integer getVehicleId() {
 		return vehicleId;
@@ -42,15 +46,6 @@ public class Vehicle {
 	public void setVehicle_Number_Plate(String vehicle_Number_Plate) {
 		Vehicle_Number_Plate = vehicle_Number_Plate;
 	}
-
-	public VehicleType  getVehicle_Type() {
-		return Vehicle_Type;
-	}
-
-	public void setVehicle_Type(VehicleType  vehicle_Type) {
-		Vehicle_Type = vehicle_Type;
-	}
-
 	public Date getEntry_Time() {
 		return Entry_Time;
 	}
@@ -70,7 +65,7 @@ public class Vehicle {
 	public Vehicle(Integer vehicleId, String vehicle_Number_Plate, VehicleType vehicle_Type) {
 		this.vehicleId = vehicleId;
 		Vehicle_Number_Plate = vehicle_Number_Plate;
-		this.setVehicle_Type(vehicle_Type);
+		this.setVehicleType(vehicleType);
 	}
 
 }

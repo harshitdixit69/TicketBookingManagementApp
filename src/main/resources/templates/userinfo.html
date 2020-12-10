@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Result</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
@@ -27,22 +28,23 @@
                 <tr th:each="vehicle:${allVehicle}">
                     <td th:text="${vehicle.vehicleId}">id</td>
                     <td th:text="${vehicle.Vehicle_Number_Plate}">vehicleNameplate</td>
-                    <td th:text="${vehicle.Vehicle_Type}">vehicleType</td>
+                    <td th:text="${vehicle.vehicleType}">vehicleType</td>
                     <td th:text="${vehicle.Entry_Time}">Vehicle Entry Timing</td>
                     <td th:text="${vehicle.Exit_Time}">Vehicle Exit Timing</td>
-                    <td> <a href="#" th:href="@{/api/tickets/get/deleteData/__${vehicle.vehicleId}__}">Delete</a>
+                    <td> <a href="#" th:href="@{/get/deleteData/__${vehicle.vehicleId}__}">Delete</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a href="#" th:href="@{/api/tickets/get/getType/car}"><i class='fas fa-car-side' style='font-size:24px'>
+        <a href="#" th:href="@{/get/getType/car}"><i class='fas fa-car-side' style='font-size:24px'>
             </i></a>
-        <a href="#" th:href="@{/api/tickets/get/getType/bike}"><i class='fas fa-bicycle' style='font-size:24px'>
+        <a href="#" th:href="@{/get/getType/bike}"><i class='fas fa-bicycle' style='font-size:24px'>
             </i></a>
-        <a href="#" th:href="@{/api/tickets/get/createparking}">All</a>
-        <a href="#" th:href="@{/api/tickets/set/createuser}">Create User</a>
+        <a href="#" th:href="@{/get/createparking}"> All </a>
+
         <br>
-        <a href="#" th:href="@{/logout}" class="">Log Out</a>
+        <a href="#" th:href="@{/set/createuser}"> Create User </a>
+        <a href="#" th:href="@{/logout}" class=""> Log Out </a>
     </div>
 
 

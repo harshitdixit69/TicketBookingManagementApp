@@ -2,6 +2,7 @@ package com.infotech.book.ticket.app.controller;
 
 import com.infotech.book.ticket.app.entities.Entities;
 import com.infotech.book.ticket.app.entities.Vehicle;
+import com.infotech.book.ticket.app.entities.VehicleType;
 import com.infotech.book.ticket.app.service.Userservice;
 import com.infotech.book.ticket.app.service.VehicleDataService;
 
@@ -72,6 +73,14 @@ public class VehicleDataController {
 		ModelAndView modelAndView = new ModelAndView();
 		vehicleDataService.deleteData(vehicleId);
 		modelAndView.setViewName("success");
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/get/getType/{vehicleType}")
+	public ModelAndView getListVehicleType(@PathVariable("vehicleType") VehicleType vehicleType) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("allVehicle", vehicleDataService.gettypeAll(vehicleType));
+		modelAndView.setViewName("vehicletype");
 		return modelAndView;
 	}
 }

@@ -18,9 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/api/tickets/get/**").hasAnyRole("admin").and().formLogin()
-                .defaultSuccessUrl("/api/tickets/get/createparking");
-        http.authorizeRequests().antMatchers("/api/tickets/set/**").permitAll();
+        http.authorizeRequests().antMatchers("/get/**").hasAnyRole("admin").and().formLogin()
+                .defaultSuccessUrl("/get/createparking");
+        http.authorizeRequests().antMatchers("/set/**").permitAll();
     }
 
     @Override
